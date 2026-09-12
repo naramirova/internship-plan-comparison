@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans Comparison</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-900 font-sans p-4 sm:p-8 min-h-screen">
+
+    <main class="max-w-5xl mx-auto">
+        <h1 class="text-2xl sm:text-3xl font-bold text-center mb-6">Compare Plans & Features</h1>
+
+        <!-- Переключатель (Toggle Control) с правильным focus-visible -->
+        <div class="flex justify-center mb-8">
+            <label for="diff-toggle" class="relative inline-flex items-center cursor-pointer gap-3 select-none">
+                <input type="checkbox" id="diff-toggle" class="sr-only peer" aria-describedby="toggle-hint">
+                <!-- Кастомный свитч: с ровной фокусной рамкой для клавиатуры -->
+                <div
+                    class="w-11 h-6 bg-slate-300 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-blue-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                </div>
+                <span class="text-sm font-medium text-slate-800">Highlight differences only</span>
+            </label>
+            <span id="toggle-hint" class="sr-only">
+                Hiding features that are identical across all three plans
+            </span>
+        </div>
+
+        <!-- Область таблицы: Прокручиваемый контейнер на мобилках с визиуальным фокусом -->
+        <div class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600"
+            tabindex="0" aria-label="Pricing plans comparison table">
+            <table class="w-full text-left text-sm border-collapse min-w-[600px] sm:min-w-full">
+                <caption class="sr-only">Detailed comparison of Basic, Pro, and Enterprise features</caption>
+
+                <!-- Заголовок таблицы -->
+                <thead class="bg-slate-100 text-slate-700 font-semibold border-b border-slate-200">
+                    <tr>
+                        <th scope="col" class="p-4 w-1/4">Features</th>
+                        <th scope="col" class="p-4 w-1/4 text-center">Basic</th>
+                        <th scope="col" class="p-4 w-1/4 text-center">Pro</th>
+                        <th scope="col" class="p-4 w-1/4 text-center">Enterprise</th>
+                    </tr>
+                </thead>
+
+                <!-- Тело таблицы -->
+                <tbody class="divide-y divide-slate-200" id="table-body">
+
+                    <!-- data-same="true" для одинаковых фич, data-same="false" для разных -->
+                    <tr data-same="true" class="hover:bg-slate-50 transition-colors">
+                        <th scope="row" class="p-4 font-medium text-slate-900">SSL Certificate</th>
+                        <td class="p-4 text-center">Included</td>
+                        <td class="p-4 text-center">Included</td>
+                        <td class="p-4 text-center">Included</td>
+                    </tr>
+
+                    <tr data-same="false" class="hover:bg-slate-50 transition-colors">
+                        <th scope="row" class="p-4 font-medium text-slate-900">Storage Limit</th>
+                        <td class="p-4 text-center">10 GB</td>
+                        <td class="p-4 text-center">100 GB</td>
+                        <td class="p-4 text-center">Unlimited</td>
+                    </tr>
+
+                    <tr data-same="false" class="hover:bg-slate-50 transition-colors">
+                        <th scope="row" class="p-4 font-medium text-slate-900">Team Members</th>
+                        <td class="p-4 text-center">1 User</td>
+                        <td class="p-4 text-center">Up to 5 Users</td>
+                        <td class="p-4 text-center">Unlimited</td>
+                    </tr>
+
+                    <tr data-same="true" class="hover:bg-slate-50 transition-colors">
+                        <th scope="row" class="p-4 font-medium text-slate-900">24/7 Email Support</th>
+                        <td class="p-4 text-center">Yes</td>
+                        <td class="p-4 text-center">Yes</td>
+                        <td class="p-4 text-center">Yes</td>
+                    </tr>
+
+                    <tr data-same="false" class="hover:bg-slate-50 transition-colors">
+                        <th scope="row" class="p-4 font-medium text-slate-900">Priority Support</th>
+                        <td class="p-4 text-center text-slate-400">No</td>
+                        <td class="p-4 text-center">Yes</td>
+                        <td class="p-4 text-center font-medium text-blue-600">Dedicated Manager</td>
+                    </tr>
+
+                    <tr data-same="false" class="hover:bg-slate-50 transition-colors">
+                        <th scope="row" class="p-4 font-medium text-slate-900">Custom Domain</th>
+                        <td class="p-4 text-center text-slate-400">No</td>
+                        <td class="p-4 text-center">Yes (1)</td>
+                        <td class="p-4 text-center">Unlimited</td>
+                    </tr>
+
+                    <tr data-same="true" class="hover:bg-slate-50 transition-colors">
+                        <th scope="row" class="p-4 font-medium text-slate-900">API Access</th>
+                        <td class="p-4 text-center">Read-only</td>
+                        <td class="p-4 text-center">Read-only</td>
+                        <td class="p-4 text-center">Read-only</td>
+                    </tr>
+
+                    <tr data-same="false" class="hover:bg-slate-50 transition-colors">
+                        <th scope="row" class="p-4 font-medium text-slate-900">API Rate Limits</th>
+                        <td class="p-4 text-center">1k / day</td>
+                        <td class="p-4 text-center">50k / day</td>
+                        <td class="p-4 text-center">1M / day</td>
+                    </tr>
+
+                    <tr data-same="false" class="hover:bg-slate-50 transition-colors">
+                        <th scope="row" class="p-4 font-medium text-slate-900">Analytics</th>
+                        <td class="p-4 text-center">Basic</td>
+                        <td class="p-4 text-center">Advanced</td>
+                        <td class="p-4 text-center">Custom</td>
+                    </tr>
+
+                    <tr data-same="true" class="hover:bg-slate-50 transition-colors">
+                        <th scope="row" class="p-4 font-medium text-slate-900">Data Backup</th>
+                        <td class="p-4 text-center">Daily</td>
+                        <td class="p-4 text-center">Daily</td>
+                        <td class="p-4 text-center">Daily</td>
+                    </tr>
+
+                    <tr data-same="false" class="hover:bg-slate-50 transition-colors">
+                        <th scope="row" class="p-4 font-medium text-slate-900">Uptime SLA</th>
+                        <td class="p-4 text-center">99.0%</td>
+                        <td class="p-4 text-center">99.9%</td>
+                        <td class="p-4 text-center">99.99%</td>
+                    </tr>
+
+                    <tr data-same="false" class="hover:bg-slate-50 transition-colors">
+                        <th scope="row" class="p-4 font-medium text-slate-900">Single Sign-On (SSO)</th>
+                        <td class="p-4 text-center text-slate-400">No</td>
+                        <td class="p-4 text-center text-slate-400">No</td>
+                        <td class="p-4 text-center">Yes</td>
+                    </tr>
+
+                    <tr data-same="false" class="hover:bg-slate-50 transition-colors">
+                        <th scope="row" class="p-4 font-medium text-slate-900">Custom Branding</th>
+                        <td class="p-4 text-center text-slate-400">No</td>
+                        <td class="p-4 text-center">Yes</td>
+                        <td class="p-4 text-center">Yes</td>
+                    </tr>
+
+                    <tr data-same="false" class="hover:bg-slate-50 transition-colors">
+                        <th scope="row" class="p-4 font-medium text-slate-900">Audit Logs</th>
+                        <td class="p-4 text-center">7 Days</td>
+                        <td class="p-4 text-center">30 Days</td>
+                        <td class="p-4 text-center">1 Year</td>
+                    </tr>
+
+                    <tr data-same="false" class="bg-slate-50 font-bold">
+                        <th scope="row" class="p-4 text-slate-900">Monthly Price</th>
+                        <td class="p-4 text-center text-slate-900">$0</td>
+                        <td class="p-4 text-center text-slate-900">$29</td>
+                        <td class="p-4 text-center text-slate-900">$99</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
